@@ -13,7 +13,7 @@ data "aws_subnet_ids" "private" {
   count  = "${var.enabled == "true" ? 1 : 0}"
   vpc_id = "${data.aws_vpc.kops.id}"
 
-  tags {
+  tags = {
     "kubernetes.io/role/internal-elb" = "1"
   }
 }
@@ -22,7 +22,7 @@ data "aws_subnet_ids" "utility" {
   count  = "${var.enabled == "true" ? 1 : 0}"
   vpc_id = "${data.aws_vpc.kops.id}"
 
-  tags {
+  tags = {
     "kubernetes.io/role/elb" = "1"
   }
 }
